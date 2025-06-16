@@ -35,6 +35,8 @@ async function fetchWithAuth<T>(
   });
 
   if (response.status === 401 && refreshToken) {
+    console.log("Erro 401", response);
+
     const newToken = await tryRefreshToken(refreshToken);
     console.log("Tentando refresh token", newToken);
 
@@ -58,6 +60,7 @@ async function fetchWithAuth<T>(
   }
 
   if (!response.ok) {
+    console.error("Deu erro dnv:", response);
     throw new Error(`HTTP error! status: ${response.status}`);
   }
 
@@ -65,42 +68,31 @@ async function fetchWithAuth<T>(
   return json;
 }
 
-
 // Métodos expostos
 
 export async function get<T>(url: string): Promise<BaseResponse<T>> {
-  return fetchWithAuth < T > (url, { method: "GET" });
+  return fetchWithAuth<T>(url, { method: "GET" });
 }
 
 export async function post<T>(
   url: string,
   body: any
 ): Promise<BaseResponse<T>> {
-  return (
-    fetchWithAuth <
-    T >
-    (url,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    })
-  );
+  return fetchWithAuth<T>(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
 }
 
 export async function put<T>(url: string, body: any): Promise<BaseResponse<T>> {
-  return (
-    fetchWithAuth <
-    T >
-    (url,
-    {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    })
-  );
+  return fetchWithAuth<T>(url, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
 }
 
 export async function del<T>(url: string): Promise<BaseResponse<T>> {
-  return fetchWithAuth < T > (url, { method: "DELETE" });
+  return fetchWithAuth<T>(url, { method: "DELETE" });
 }
