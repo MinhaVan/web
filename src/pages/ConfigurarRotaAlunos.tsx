@@ -5,6 +5,7 @@ import { Rota } from "../interfaces/Rota";
 import { Aluno } from "../interfaces/Aluno";
 import AsyncSelect from "react-select/async";
 import debounce from "lodash.debounce";
+import { Button } from "@/components/ui/button";
 
 type AlunoOption = {
   value: string;
@@ -52,7 +53,7 @@ export default function ConfigurarRotaAlunos() {
   }, [rotaSelecionada]);
 
   // Busca alunos da API
-  const loadAlunoOptions = debounce(async (inputValue, callback) => {
+  const loadAlunoOptions = debounce(async (inputValue: any, callback: any) => {
     if (!inputValue || inputValue.length < 3) return callback([]);
 
     setLoadingAlunos(true);
@@ -90,7 +91,7 @@ export default function ConfigurarRotaAlunos() {
     return true;
   }
 
-  async function handleSalvar(e) {
+  async function handleSalvar(e: any) {
     e.preventDefault();
     if (!validar()) return;
 
@@ -225,17 +226,13 @@ export default function ConfigurarRotaAlunos() {
           )}
         </div>
 
-        <button
+        <Button
           type="submit"
           disabled={salvando}
-          className={`w-full py-3 text-white font-semibold rounded ${
-            salvando
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-green-600 hover:bg-green-700"
-          } transition`}
+          className={`w-full py-3 text-white font-semibold rounded`}
         >
           {salvando ? "Salvando..." : "Salvar Configuração"}
-        </button>
+        </Button>
       </form>
     </div>
   );

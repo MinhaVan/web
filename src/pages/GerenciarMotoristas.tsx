@@ -72,7 +72,6 @@ export default function GerenciarMotoristas() {
   };
 
   const salvarMotorista = async () => {
-    console.log("Salvando motorista:", formData);
     if (editando && editando.id != null) {
       await http.put(`/Pessoas/v1/Motorista`, { ...formData, id: editando.id });
     } else {
@@ -113,7 +112,6 @@ export default function GerenciarMotoristas() {
   };
 
   const abrirEditar = (motorista: Motorista) => {
-    console.log("Editando motorista:", motorista);
     setEditando(motorista);
     setFormData({
       cpf: motorista.cpf ?? "",

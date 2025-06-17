@@ -1,17 +1,32 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginRequest } from "./authService";
+import { loginRequest } from "./authService.js";
+import { Usuario } from "@/interfaces/Usuario";
 
-export const AuthContext = createContext();
+// Definindo a interface para o contexto
+interface AuthContextType {
+  user: Usuario | null;
+  token: string | null;
+  login: (email: string, senha: string) => Promise<void>;
+  logout: () => void;
+}
 
-export const AuthProvider = ({ children }) => {
+// Valor inicial do contexto
+const defaultAuthContext: AuthContextType = {
+  user: null,
+  token: null,
+  login: async () => {},
+  logout: () => {},
+};
+
+export const AuthContext = createContext<AuthContextType>(defaultAuthContext);
+
+export const AuthProvider = ({ children }: any) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const [user, setUser] = useState(() => {
-    return "";
-  });
+  const [user, setUser] = useState<Usuario>({} as Usuario);
   const navigate = useNavigate();
 
-  const login = async (email, senha) => {
+  const login = async (email: string, senha: string) => {
     const response = await loginRequest(email, senha);
 
     if (response?.accessToken) {
@@ -27,8 +42,9 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("refreshToken");
     setToken(null);
-    setUser(null);
+    setUser({} as Usuario);
     navigate("/login");
   };
 

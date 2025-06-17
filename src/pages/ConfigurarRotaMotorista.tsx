@@ -5,6 +5,7 @@ import { Rota } from "../interfaces/Rota";
 import { Aluno } from "../interfaces/Aluno";
 import { Motorista } from "../interfaces/Motorista";
 import { BaseResponse } from "../interfaces/BaseResponse";
+import { Button } from "@/components/ui/button";
 
 type AlunoOption = {
   value: string;
@@ -36,7 +37,6 @@ export default function ConfigurarRotaMotorista() {
           "/Pessoas/v1/Motorista?completarDadosDoUsuario=true"
         );
         setMotoristas(response.data || []);
-        console.log("motoristas", response.data);
       } catch {
         setErro("Erro ao carregar motoristas");
       } finally {
@@ -69,12 +69,11 @@ export default function ConfigurarRotaMotorista() {
       const vinculados = response.data || {};
       setMotoristaVinculado(vinculados);
       setMotoristaVinculadoBackUp(vinculados);
-      console.log("vinculados", vinculados);
     }
     if (rotaSelecionada) fetchMotoristasVinculados();
   }, [rotaSelecionada]);
 
-  async function handleSalvar(e) {
+  async function handleSalvar(e: any) {
     e.preventDefault();
     setSalvando(true);
     setErro("");
@@ -203,17 +202,13 @@ export default function ConfigurarRotaMotorista() {
           )}
         </div>
 
-        <button
+        <Button
           type="submit"
           disabled={salvando}
-          className={`w-full py-3 text-white font-semibold rounded ${
-            salvando
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-green-600 hover:bg-green-700"
-          } transition`}
+          className={`w-full py-3 text-white font-semibold rounded`}
         >
           {salvando ? "Salvando..." : "Salvar Configuração"}
-        </button>
+        </Button>
       </form>
     </div>
   );

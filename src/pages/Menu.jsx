@@ -27,7 +27,7 @@ export default function Menu() {
       </div>
 
       <div>
-        <span className="mr-4">Olá, {user?.email || "Usuário"}</span>
+        <span className="mr-4">Olá, {user?.primeiroNome || "Usuário"}</span>
         <button
           onClick={logout}
           className="bg-red-600 px-3 py-1 rounded hover:bg-red-700"

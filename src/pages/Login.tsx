@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useAuth } from "../hooks/useAuth";
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Login() {
   const { login } = useAuth();
@@ -7,7 +8,7 @@ export default function Login() {
   const [senha, setSenha] = useState("Walterli#10");
   const [erro, setErro] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setErro("");
 
@@ -50,12 +51,9 @@ export default function Login() {
           />
         </div>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition"
-        >
+        <Button type="submit" className="w-full text-white p-2 rounded-md">
           Entrar
-        </button>
+        </Button>
       </form>
     </div>
   );
