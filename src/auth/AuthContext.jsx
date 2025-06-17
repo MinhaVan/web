@@ -14,7 +14,6 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, senha) => {
     const response = await loginRequest(email, senha);
 
-    console.log("loginRequest..", response);
     if (response?.accessToken) {
       localStorage.setItem("token", response.accessToken);
       localStorage.setItem("refreshToken", response.refreshToken);

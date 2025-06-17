@@ -18,7 +18,12 @@ export default function Menu() {
         <NavLink to="/rota-alunos" className="ml-4 hover:underline">
           Rota x Alunos
         </NavLink>
-        {/* Outros links que quiser */}
+        <NavLink to="/rota-motorista" className="ml-4 hover:underline">
+          Rota x Motorista
+        </NavLink>
+        <NavLink to="/motorista" className="ml-4 hover:underline">
+          Motorista
+        </NavLink>
       </div>
 
       <div>

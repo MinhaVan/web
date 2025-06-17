@@ -14,7 +14,6 @@ export default function Login() {
     try {
       await login(email, senha);
     } catch (err) {
-      console.error("Erro no login:", err);
       setErro("E-mail ou senha inválidos");
     }
   };

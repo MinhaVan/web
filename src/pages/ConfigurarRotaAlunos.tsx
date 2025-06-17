@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Select from "react-select";
-import * as http from "../auth/httpService";
+import * as http from "../utils/api";
 import { Rota } from "../interfaces/Rota";
 import { Aluno } from "../interfaces/Aluno";
 import AsyncSelect from "react-select/async";
@@ -16,7 +16,6 @@ export default function ConfigurarRotaAlunos() {
   const [rotas, setRotas] = useState<Rota[]>([]);
   const [rotaSelecionada, setRotaSelecionada] = useState<any>(null);
   const [alunosSelecionados, setAlunosSelecionados] = useState<Aluno[]>([]);
-  const [alunoOptions, setAlunoOptions] = useState<any[]>([]);
   const [loadingRotas, setLoadingRotas] = useState(false);
   const [loadingAlunos, setLoadingAlunos] = useState(false);
   const [salvando, setSalvando] = useState(false);
@@ -29,7 +28,7 @@ export default function ConfigurarRotaAlunos() {
     async function fetchRotas() {
       setLoadingRotas(true);
       try {
-        const response = await http.get<Rota[]>("/Routes/v1/Rota/All");
+        const response = await http.get<Rota[]>("/Routes/v1/Rota");
         setRotas(response.data || []);
       } catch {
         setErro("Erro ao carregar rotas");
