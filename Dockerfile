@@ -14,7 +14,11 @@ RUN pnpm build
 
 FROM nginx:stable-alpine
 
+# Copia o build do frontend
 COPY --from=build /app/dist /usr/share/nginx/html
+
+# Copia o nginx.conf customizado para substituir o default
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
