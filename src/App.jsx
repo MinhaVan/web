@@ -32,6 +32,7 @@ export default function App() {
                 path="/rota-motorista"
                 element={<ConfigurarRotaMotorista />}
               />
+              <Route path="/" element={<Dashboard />} />
               <Route path="/rota-alunos" element={<ConfigurarRotaAlunos />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/motorista" element={<GerenciarMotoristas />} />
