@@ -9,6 +9,7 @@ import * as http from "../utils/api";
 import { Motorista } from "@/interfaces/Motorista";
 import { Perfil } from "@/interfaces/Perfil";
 import { CNH } from "@/interfaces/CNH";
+import { RemoverDialog } from "@/dialog/RemoverDialog";
 
 export default function GerenciarMotoristas() {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -409,7 +410,7 @@ export default function GerenciarMotoristas() {
                   {motorista.primeiroNome} {motorista.ultimoNome}
                 </h3>
                 <p>CPF: {motorista.cpf}</p>
-                <p>Status: {motorista.status == 1 ? "Ativo" : "Desativado"}</p>
+                <p>Status: {motorista.status === 1 ? "Ativo" : "Desativado"}</p>
                 <div className="flex gap-2">
                   <Button
                     variant="outline"
@@ -417,12 +418,17 @@ export default function GerenciarMotoristas() {
                   >
                     <Pencil className="w-4 h-4" />
                   </Button>
-                  <Button
-                    variant="destructive"
-                    onClick={() => removerMotorista(motorista.id ?? 0)}
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </Button>
+
+                  <RemoverDialog
+                    title="Deseja remover este motorista?"
+                    subtitle="Caso necessário, essa ação poderá ser desfeita."
+                    onConfirm={() => removerMotorista(motorista.id ?? 0)}
+                    trigger={
+                      <Button variant="destructive">
+                        <Trash2 className="w-4 h-4" />
+                      </Button>
+                    }
+                  />
                 </div>
               </CardContent>
             </Card>
