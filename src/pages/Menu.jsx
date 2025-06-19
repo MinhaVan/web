@@ -15,14 +15,17 @@ export default function Menu() {
         >
           Dashboard
         </NavLink>
+        <NavLink to="/motorista" className="ml-4 hover:underline">
+          Motorista
+        </NavLink>
+        <NavLink to="/rota" className="ml-4 hover:underline">
+          Rota
+        </NavLink>
         <NavLink to="/rota-alunos" className="ml-4 hover:underline">
           Rota x Alunos
         </NavLink>
         <NavLink to="/rota-motorista" className="ml-4 hover:underline">
           Rota x Motorista
-        </NavLink>
-        <NavLink to="/motorista" className="ml-4 hover:underline">
-          Motorista
         </NavLink>
       </div>
 

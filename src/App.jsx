@@ -3,10 +3,11 @@ import { AuthProvider } from "./auth/AuthContext";
 import Login from "./pages/Login";
 import Menu from "./pages/Menu";
 import Dashboard from "./pages/Dashboard";
-import ConfigurarRotaAlunos from "./pages/ConfigurarRotaAlunos";
 import { PrivateRoute } from "./routes/PrivateRoute";
+import ConfigurarRotaAlunos from "./pages/ConfigurarRotaAlunos";
 import ConfigurarRotaMotorista from "./pages/ConfigurarRotaMotorista";
 import GerenciarMotoristas from "./pages/GerenciarMotoristas";
+import GerenciarRotas from "./pages/GerenciarRotas";
 
 function ProtectedLayout() {
   return (
@@ -36,6 +37,7 @@ export default function App() {
               <Route path="/rota-alunos" element={<ConfigurarRotaAlunos />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/motorista" element={<GerenciarMotoristas />} />
+              <Route path="/rota" element={<GerenciarRotas />} />
             </Route>
           </Route>
         </Routes>

@@ -1,5 +1,5 @@
-export interface Rota {
-  id: number;
+interface Rota {
+  id?: number;
   enderecoId: number;
   veiculoId: number;
   nome: string;
@@ -7,4 +7,6 @@ export interface Rota {
   diaSemana: number;
   horario: string;
   tipoRota: number;
+  status: number;
+  veiculo?: Veiculo;
 }
