@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import * as http from "../utils/api";
-import { Rota } from "../interfaces/Rota";
-import { Aluno } from "../interfaces/Aluno";
-import { Motorista } from "../interfaces/Motorista";
-import { BaseResponse } from "../interfaces/BaseResponse";
+import { Rota } from "../types/Rota";
+import { Aluno } from "../types/Aluno";
+import { Motorista } from "../types/Motorista";
+import { BaseResponse } from "../types/BaseResponse";
 import { Button } from "@/components/ui/button";
 
 type AlunoOption = {

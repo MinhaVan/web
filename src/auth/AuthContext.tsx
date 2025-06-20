@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginRequest } from "./authService.js";
-import { Usuario } from "@/interfaces/Usuario";
+import { Usuario } from "@/types/Usuario";
 
 // Definindo a interface para o contexto
 interface AuthContextType {

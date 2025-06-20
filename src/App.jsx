@@ -8,6 +8,7 @@ import ConfigurarRotaAlunos from "./pages/ConfigurarRotaAlunos";
 import ConfigurarRotaMotorista from "./pages/ConfigurarRotaMotorista";
 import GerenciarMotoristas from "./pages/GerenciarMotoristas";
 import GerenciarRotas from "./pages/GerenciarRotas";
+import ConfigurarMarcadores from "./pages/ConfigurarMarcadores/ConfigurarMarcadores";
 
 function ProtectedLayout() {
   return (
@@ -38,6 +39,10 @@ export default function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/motorista" element={<GerenciarMotoristas />} />
               <Route path="/rota" element={<GerenciarRotas />} />
+              <Route
+                path="/rota/:id/marcadores"
+                element={<ConfigurarMarcadores />}
+              />
             </Route>
           </Route>
         </Routes>

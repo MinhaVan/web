@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-import { BaseResponse } from "../interfaces/BaseResponse";
+import { BaseResponse } from "../types/BaseResponse";
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 

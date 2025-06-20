@@ -6,10 +6,10 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { DialogTitle } from "@/components/ui/dialog";
 import { Trash2, Pencil } from "lucide-react";
 import * as http from "../utils/api";
-import { Motorista } from "@/interfaces/Motorista";
-import { Perfil } from "@/interfaces/Perfil";
-import { CNH } from "@/interfaces/CNH";
-import { RemoverDialog } from "@/dialog/RemoverDialog";
+import { Motorista } from "@/types/Motorista";
+import { Perfil } from "@/types/Perfil";
+import { CNH } from "@/types/CNH";
+import { RemoverDialog } from "@/components/dialog/RemoverDialog";
 
 export default function GerenciarMotoristas() {
   const [dialogOpen, setDialogOpen] = useState(false);

@@ -4,6 +4,7 @@ interface Rota {
   veiculoId: number;
   nome: string;
   emAndamento: boolean;
+  deveBuscarRotaNoGoogleMaps: boolean;
   diaSemana: number;
   horario: string;
   tipoRota: number;

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import Select from "react-select";
 import * as http from "../utils/api";
-import { Rota } from "../interfaces/Rota";
-import { Aluno } from "../interfaces/Aluno";
+import { Rota } from "../types/Rota";
+import { Aluno } from "../types/Aluno";
 import AsyncSelect from "react-select/async";
 import debounce from "lodash.debounce";
 import { Button } from "@/components/ui/button";

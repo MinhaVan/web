@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Trash2, Pencil } from "lucide-react";
 import * as http from "../utils/api";
+import { Link } from "react-router-dom";
 
 export default function GerenciarRotas() {
   const [rotas, setRotas] = useState<Rota[]>([]);
@@ -78,7 +79,7 @@ export default function GerenciarRotas() {
   };
 
   const resetFormData = () => {
-    setFormData({} as Rota);
+    setFormData({ status: 1, deveBuscarRotaNoGoogleMaps: false } as Rota);
     setEditando(null);
   };
 
@@ -191,6 +192,24 @@ export default function GerenciarRotas() {
                 </label>
               </div>
 
+              <div className="flex items-center space-x-2">
+                <input
+                  id="deveBuscarRotaNoGoogleMaps"
+                  type="checkbox"
+                  checked={formData.deveBuscarRotaNoGoogleMaps}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      deveBuscarRotaNoGoogleMaps: e.target.checked,
+                    })
+                  }
+                  className="w-4 h-4"
+                />
+                <label htmlFor="deveBuscarRotaNoGoogleMaps" className="text-sm">
+                  Ao iniciar, deve buscar a rota no GoogleMaps
+                </label>
+              </div>
+
               <Button onClick={salvarRota}>
                 {editando ? "Atualizar" : "Cadastrar"}
               </Button>
@@ -211,10 +230,11 @@ export default function GerenciarRotas() {
               <p>Horário: {rota.horario}</p>
               <p>
                 Dia da Semana:{" "}
-                {diaSemana.find((x) => x.id === rota.diaSemana).description}
+                {diaSemana.find((x) => x.id === rota.diaSemana)?.description}
               </p>
               <p>Tipo de Rota: {rota.tipoRota === 1 ? "Ida" : "Volta"}</p>
               <p>Status: {rota.status == 1 ? "Ativo" : "Deletado"}</p>
+
               <div className="flex gap-2">
                 <Button variant="outline" onClick={() => abrirEditar(rota)}>
                   <Pencil className="w-4 h-4" />
@@ -225,6 +245,16 @@ export default function GerenciarRotas() {
                 >
                   <Trash2 className="w-4 h-4" />
                 </Button>
+              </div>
+
+              {/* Link para configurar marcadores */}
+              <div>
+                <Link
+                  to={`/rota/${rota.id}/marcadores`}
+                  className="inline-block mt-2 text-sm text-blue-600 hover:underline"
+                >
+                  Configurar Marcadores
+                </Link>
               </div>
             </CardContent>
           </Card>
