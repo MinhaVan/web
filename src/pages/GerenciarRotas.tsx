@@ -249,12 +249,14 @@ export default function GerenciarRotas() {
 
               {/* Link para configurar marcadores */}
               <div>
-                <Link
-                  to={`/rota/${rota.id}/marcadores`}
-                  className="inline-block mt-2 text-sm text-blue-600 hover:underline"
-                >
-                  Configurar Marcadores
-                </Link>
+                {rota.deveBuscarRotaNoGoogleMaps && rota.status === 1 && (
+                  <Link
+                    to={`/rota/${rota.id}/marcadores`}
+                    className="inline-block mt-2 text-sm text-blue-600 hover:underline"
+                  >
+                    Configurar Marcadores
+                  </Link>
+                )}
               </div>
             </CardContent>
           </Card>
